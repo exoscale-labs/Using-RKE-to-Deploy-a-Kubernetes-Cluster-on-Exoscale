@@ -1,0 +1,17 @@
+#cloud-config
+
+manage_etc_hosts: true
+
+package_update: true
+package_upgrade: true
+
+packages:
+- curl
+
+runcmd:
+- "curl https://releases.rancher.com/install-docker/17.03.sh| bash"
+- "usermod -aG docker ubuntu"
+- "mkdir /data"
+
+power_state:
+  mode: reboot
